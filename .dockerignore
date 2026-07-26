@@ -1,0 +1,16 @@
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+frontend/node_modules
+
+.git
+.gitignore
+
+.env
+
+*.db-journal
+
+backend/__pycache__

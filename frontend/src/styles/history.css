@@ -1,0 +1,23 @@
+.history-container {
+  padding: 30px;
+}
+
+.history-container h1 {
+  margin-bottom: 30px;
+}
+
+.chart-card {
+  background: #111827;
+
+  border-radius: 12px;
+
+  padding: 20px;
+
+  margin-bottom: 30px;
+
+  border: 1px solid #1f2937;
+}
+
+.chart-card h2 {
+  margin-bottom: 20px;
+}

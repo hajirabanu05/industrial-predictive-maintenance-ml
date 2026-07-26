@@ -1,0 +1,34 @@
+.machines-container {
+  padding: 30px;
+}
+
+.machines-container h1 {
+  margin-bottom: 30px;
+}
+
+.machines-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(300px, 1fr));
+
+  gap: 25px;
+}
+
+.machine-card {
+  background: #111827;
+
+  border-radius: 12px;
+
+  padding: 25px;
+
+  border: 1px solid #1f2937;
+}
+
+.machine-card h2 {
+  margin-bottom: 20px;
+}
+
+.machine-card p {
+  margin-bottom: 10px;
+}

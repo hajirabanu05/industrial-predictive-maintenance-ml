@@ -340,8 +340,7 @@ predictive-maintenance/
 ## Clone Repository
 
 ```bash
-git clone https://github.com/hajirabanu05/predictive-maintenance-platform.git
-
+https://github.com/hajirabanu05/industrial-predictive-maintenance-ml.git
 cd predictive-maintenance-platform 
 ```
 

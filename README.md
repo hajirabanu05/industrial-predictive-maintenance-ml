@@ -15,6 +15,7 @@ Built as part of an AI/ML hackathon at **AIT College**, where our team developed
 The project received industry recognition and resulted in an **AIML internship opportunity at a startup company** after the hackathon.
 
 Project Evolution: The original version was developed as a Streamlit-based ML prototype for the hackathon. The project was subsequently extended into the current full-stack platform with a FastAPI backend, React dashboard, database persistence, historical analytics, automated email alerts, and Dockerized deployment.
+
 ---
 
 # Problem Statement

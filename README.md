@@ -8,16 +8,6 @@ The system combines Machine Learning, FastAPI, React, SQL databases, automated e
 
 ---
 
-## 🚀 Hackathon & Industry Recognition
-
-Built as part of an AI/ML hackathon at **AIT College**, where our team developed this project from concept to working prototype.
-
-The project received industry recognition and resulted in an **AIML internship opportunity at a startup company** after the hackathon.
-
-Project Evolution: The original version was developed as a Streamlit-based ML prototype for the hackathon. The project was subsequently extended into the current full-stack platform with a FastAPI backend, React dashboard, database persistence, historical analytics, automated email alerts, and Dockerized deployment.
-
----
-
 # Problem Statement
 
 Unexpected machine failures are one of the most expensive challenges in manufacturing and industrial operations.

@@ -2,9 +2,9 @@
 
 ![Dashboard](docs/dashboard.png)
 
-A full-stack machine learning platform that continuously monitors industrial equipment, predicts failures before breakdowns occur, generates automated maintenance alerts, tracks machine health history, and visualizes operational risk through an interactive monitoring dashboard.
+A full-stack machine learning platform that monitors industrial equipment, predicts machine failure risk from sensor data, generates automated maintenance alerts, tracks machine history, and visualizes operational risk through an interactive monitoring dashboard.
 
-The system combines Machine Learning, FastAPI, React, SQL databases, automated email notifications, and Dockerized deployment to simulate a real-world predictive maintenance workflow used in modern industrial environments.
+The system combines Machine Learning, FastAPI, React, SQL databases, automated email notifications, and Dockerized deployment to simulate a real-world predictive maintenance workflow.
 
 ---
 
@@ -14,6 +14,7 @@ Built as part of an AI/ML hackathon at **AIT College**, where our team developed
 
 The project received industry recognition and resulted in an **AIML internship opportunity at a startup company** after the hackathon.
 
+Project Evolution: The original version was developed as a Streamlit-based ML prototype for the hackathon. The project was subsequently extended into the current full-stack platform with a FastAPI backend, React dashboard, database persistence, historical analytics, automated email alerts, and Dockerized deployment.
 ---
 
 # Problem Statement
@@ -36,9 +37,9 @@ This project demonstrates how machine learning can be used to identify early war
 
 # Key Features
 
-### Real-Time Machine Monitoring
+### Simulated Real-Time Machine Monitoring
 
-Monitors multiple industrial machines simultaneously using continuously streamed sensor readings.
+Simulates continuous sensor readings from multiple industrial machines using dataset replay.
 
 ### Failure Prediction Engine
 
@@ -52,7 +53,7 @@ Provides:
 - Failure probability
 - Health score
 - Severity classification
-- Root cause analysis
+- Diagnostic hints
 - Maintenance recommendations
 
 ### Automated Email Alerting
@@ -90,31 +91,108 @@ The complete application runs using Docker and Docker Compose.
 # System Architecture
 
 ```text
-Industrial Machines
-        │
-        ▼
-Sensor Stream Simulation
-        │
-        ▼
-Prediction Service
-        │
-        ▼
-Machine Learning Model
-        │
-        ▼
-Failure Prediction Engine
-        │
- ┌──────┴──────┐
- ▼             ▼
-Alerts      Database
- ▼             ▼
-Email      Historical Data
-                │
-                ▼
-          FastAPI API
-                │
-                ▼
-         React Dashboard
+
+                    ┌─────────────────────────────┐
+                    │     AI4I 2020 Dataset       │
+                    │      Sensor Data Replay      │
+                    └──────────────┬──────────────┘
+                                   │
+                                   ▼
+                    ┌─────────────────────────────┐
+                    │   Sensor Stream Simulation   │
+                    │                              │
+                    │  Multiple Simulated Machines │
+                    └──────────────┬──────────────┘
+                                   │
+                                   ▼
+                    ┌─────────────────────────────┐
+                    │      Prediction Service      │
+                    │                              │
+                    │   Feature Preparation        │
+                    │   Model Inference            │
+                    └──────────────┬──────────────┘
+                                   │
+                                   ▼
+                    ┌─────────────────────────────┐
+                    │   Random Forest Classifier   │
+                    │                              │
+                    │   Input: 5 Sensor Features   │
+                    │   Output:                   │
+                    │   • Failure Prediction      │
+                    │   • Failure Probability     │
+                    └──────────────┬──────────────┘
+                                   │
+                                   ▼
+                    ┌─────────────────────────────┐
+                    │   Prediction Processing      │
+                    │                              │
+                    │   • Health Indicator         │
+                    │   • Severity Classification  │
+                    │   • Risk Thresholds          │
+                    └──────────────┬──────────────┘
+                                   │
+                    ┌──────────────┴──────────────┐
+                    │                             │
+                    ▼                             ▼
+          ┌─────────────────────┐       ┌─────────────────────┐
+          │   Diagnostic Layer  │       │   Prediction Data   │
+          │                     │       │                     │
+          │ • Sensor Rules      │       │ • Machine Readings  │
+          │ • Diagnostic Hints  │       │ • Predictions       │
+          │ • Recommendations   │       │ • Health Scores     │
+          └──────────┬──────────┘       │ • Severity          │
+                     │                  └──────────┬──────────┘
+                     ▼                             │
+          ┌─────────────────────┐                  │
+          │    Alert Service    │                  │
+          │                     │                  │
+          │ • Alert Generation  │                  │
+          │ • Cooldown Logic    │                  │
+          │ • Email Notification│                  │
+          └──────────┬──────────┘                  │
+                     │                             │
+                     ▼                             │
+          ┌─────────────────────┐                  │
+          │    Email Alert      │                  │
+          └─────────────────────┘                  │
+                                                   │
+                     ┌─────────────────────────────┘
+                     │
+                     ▼
+          ┌─────────────────────────────┐
+          │       SQLite Database        │
+          │                              │
+          │ • Machine Readings           │
+          │ • Prediction Records         │
+          │ • Alerts                     │
+          └──────────────┬──────────────┘
+                         │
+                         ▼
+          ┌─────────────────────────────┐
+          │         FastAPI API          │
+          │                              │
+          │ • Live Status                │
+          │ • Predictions                │
+          │ • History                    │
+          │ • Alerts                     │
+          │ • Dashboard Summary          │
+          └──────────────┬──────────────┘
+                         │
+                    HTTP / Axios
+                         │
+                         ▼
+          ┌─────────────────────────────┐
+          │       React Dashboard        │
+          │                              │
+          │ • Live Machine Monitoring    │
+          │ • Machine Status             │
+          │ • Risk Visualization         │
+          │ • Historical Analytics       │
+          │ • Alert Management           │
+          └─────────────────────────────┘
+
+
+
 ```
 
 ---
@@ -135,7 +213,6 @@ Email      Historical Data
 - NumPy
 - Joblib
 - XGBoost
-- MLflow
 
 ## Frontend
 
@@ -194,7 +271,7 @@ Random Forest Classifier
 
 - Failure Prediction
 - Failure Probability
-- Health Score
+- Model-derived Health Indicator
 - Severity Level
 
 ---
@@ -269,8 +346,11 @@ The Random Forest model achieved:
 - Simpler deployment and maintenance
 - Faster training and inference
 
-Based on these trade-offs, Random Forest was selected as the production model for the platform.
+Based on these trade-offs, Random Forest was selected as the deployed model for the current platform.
 
+### Diagnostic Layer
+
+The machine learning model is responsible for predicting failure risk. A separate rule-based diagnostic layer examines sensor conditions and provides possible contributing factors and maintenance recommendations. These diagnostic hints are intended to support maintenance decisions and are not presented as causal explanations.
 
 # Dashboard Screenshots
 
@@ -340,7 +420,7 @@ predictive-maintenance/
 ## Clone Repository
 
 ```bash
-https://github.com/hajirabanu05/industrial-predictive-maintenance-ml.git
+ git clone https://github.com/hajirabanu05/industrial-predictive-maintenance-ml.git
 cd predictive-maintenance-platform 
 ```
 
@@ -381,6 +461,13 @@ http://localhost:8000/docs
 - Explainable AI using SHAP-based feature attribution
 
 ---
+
+### Current Limitations
+- The AI4I 2020 dataset is synthetic and serves as a benchmark rather than a direct representation of a production industrial environment.
+- Sensor streaming is simulated through dataset replay rather than live IoT hardware.
+- Severity thresholds are currently policy-based.
+- Diagnostic hints are rule-based and are not causal explanations.
+- The current prototype uses SQLite; PostgreSQL would be more appropriate for larger-scale deployments.
 
 # Contributors
 

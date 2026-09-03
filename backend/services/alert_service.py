@@ -11,10 +11,10 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-SENDER_EMAIL = "  "
-SENDER_PASSWORD = "  "
+SENDER_EMAIL = " "
+SENDER_PASSWORD = " "
 
-RECEIVER_EMAIL = "   "
+RECEIVER_EMAIL = " "
 
 
 def send_alert(

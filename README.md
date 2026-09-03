@@ -415,11 +415,56 @@ predictive-maintenance/
 cd predictive-maintenance-platform 
 ```
 
-## Run Using Docker
+## Email Alert Configuration
+
+The application can send automated maintenance alerts through Gmail SMTP.
+
+Before running the application, configure your own Gmail credentials:
+
+### 1. Create a Gmail App Password
+
+1. Use a Gmail account that will act as the **sender**.
+2. Enable **2-Step Verification** on the Google account.
+3. Open **Google Account → Security → App Passwords**.
+4. Create a new App Password for this application.
+5. Copy the generated 16-character App Password.
+
+> **Important:** Do not use your normal Gmail password. Use the generated Google App Password.
+
+### 2. Configure Email Settings
+
+Open the email configuration file(backend/services/alert_service.py) and add your credentials:
+
+```python
+SENDER_EMAIL = "your_sender@gmail.com"
+SENDER_PASSWORD = "your_16_character_app_password"
+RECEIVER_EMAIL = "your_receiver@gmail.com"
+```
+
+The sender and receiver can be the **same Gmail account or two different email accounts**.
+
+For example:
+
+```text
+Sender:   maintenance.system@gmail.com
+Receiver: maintenance.alerts@gmail.com
+```
+
+The sender account is used to send maintenance notifications, while the receiver account receives the alerts.
+
+### 3. Run the Application
+
+After configuring the email settings, rebuild the Docker containers:
 
 ```bash
+docker compose down
 docker compose up --build
 ```
+
+When a machine reaches the configured alert condition, the system generates a maintenance alert and attempts to send an email notification to the configured receiver.
+
+> **Security:** Never commit your Gmail password or App Password to a public GitHub repository. Use your own credentials when running the application locally.
+
 
 ## Frontend
 

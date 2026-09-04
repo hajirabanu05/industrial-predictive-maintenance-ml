@@ -369,6 +369,12 @@ The machine learning model is responsible for predicting failure risk. A separat
 
 ---
 
+## Alert Mail
+
+![Alerts](docs/alertmail.jpeg)
+
+---
+
 # Project Structure
 
 ```text

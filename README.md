@@ -1,4 +1,4 @@
-# Industrial Predictive Maintenance Platform
+# Predictive Maintenance In Industrial Machinery Using Machine Learning
 
 ![Dashboard](docs/dashboard.png)
 
